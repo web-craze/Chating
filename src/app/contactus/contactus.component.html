@@ -1,0 +1,14 @@
+<h1>
+HI I AM CONTACTUS
+</h1>
+<div class="upload.area_browse.option">
+  <input id="tenantphotoId" type="file" name="tenanPhotoId" class="hide-style" (change)="onFileChange($event)">
+  <a href="#" (click)="openFileBrowser($event)">browser</a>
+  <span>{{ tenantIDFileName }}</span>
+  <ul>
+    <li *ngFor="let users of users">
+      {{ users }}
+    </li>
+  </ul>
+</div>
+<img src="https://image-store.slidesharecdn.com/c927181c-652c-470a-95f7-d520b697083b-original.jpeg">

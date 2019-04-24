@@ -1,0 +1,140 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+<div style= "background: #eceeee;
+  border: 1px solid #42464b;
+  border-radius: 6px;
+  height: 80%;
+  margin: 20px auto 0;
+  width: 30%; " class="container">
+  <div class="jumbotron">
+    <form #frm="ngForm" (ngSubmit)="addUser(frm)">
+    <div class="form-group">
+      <label for="fname">
+        Fname:
+      </label>
+      <input type="text" ngModel
+      required
+      #firstn="ngModel"
+      pattern="[a-z]*[A-Z]*"
+      class="form-control" name="firstname">
+
+
+    </div>
+    <div class="alert alert-danger" *ngIf="firstn?.touched">
+      <div *ngIf="firstn.errors?.required">
+      please enter first name
+    </div>
+    <ng-template #other_content>other content here...</ng-template>
+    <div *ngIf="firstn.errors?.pattern">
+    please enter only charector
+  </div>
+    </div>
+    <div class="form-group">
+      <label for="lname">
+        Lname:
+      </label>
+      <input type="text" class="form-control" ngModel
+      required
+      #lastn="ngModel"
+      pattern="[a-z]*[A-Z]*"
+       name="lastname">
+
+
+    </div>
+    <div class="alert alert-danger" *ngIf="lastn?.touched">
+      <div *ngIf="lastn.errors?.required">
+      please enter your last name
+    </div>
+    <div *ngIf="lastn.errors?.pattern">
+    please enter only charector
+  </div>
+    </div>
+    <div class="form-group">
+      <label for="number">
+        Number:
+      </label>
+      <input type="text" class="form-control" ngModel
+      #number= "ngModel"
+
+      required
+      pattern="[0-9]*"
+
+       name="number">
+
+
+    </div>
+    <div class="alert alert-danger" *ngIf="number?.touched">
+      <div *ngIf="number.errors?.required">
+      please enter your contect number
+    </div>
+    <div *ngIf="number.errors?.pattern">
+    please enter digit between 1to
+  </div>
+    </div>
+    <div class="form-group">
+      <label for="email">
+        Email:
+      </label>
+      <input type="email" class="form-control" ngModel
+      #email="ngModel"
+      required
+      pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+       name ="email">
+
+
+    </div>
+    <div class="alert alert-danger" *ngIf="email?.touched">
+      <div class="alert alert-danger" *ngIf="email.errors?.required">
+      please enter  email address
+    </div>
+    <div class="alert alert-danger" *ngIf="email.errors?.pattern">
+      please enter coreect email address
+    </div>
+  </div>
+
+    <div class="form-group">
+      <label for="password">
+        Password:
+      </label>
+
+      <input type="password"
+      class="form-control"
+      ngModel
+      required
+        name="password">
+
+    </div>
+    <button type="submit" name="button" class="btn btn-success" [disabled]="frm.invalid">ADD User</button>
+<a routerLink="/register" class="btn btn-primary">Login</a>
+    </form>
+
+  </div>
+</div>
+{{frm.value | json}}
+<div  class="container">
+  <div class="jumbotron">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Number</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userList">
+        <td>{{user.firstname}}</td>
+        <td>{{user.lastname}}</td>
+        <td>{{user.number}}</td>
+        <td>{{user.email}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+</div>
+</body>

@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<form #frm="ngForm" (ngSubmit)="addLoginUser(frm)">
+<div style="background: #eceeee;
+  border: 1px solid #42464b;
+  border-radius: 6px;
+  height: 90%;
+  margin: 20px auto 0;
+  width: 40%;" class="jumbotron">
+
+<div   class="container">
+  <div style="padding: 10px" class="input-group">
+
+    <span class="input-group-addon">Username</span>
+    <input type="text" name="username" required class="form-control" placeholder="Please enter your username or Email"  ngModel reqyired
+    #userna="ngModel"
+    >
+  </div>
+  <div style="padding: 10px" class="input-group">
+    <span class="input-group-addon">Password</span>
+    <input type="password" name="password" class="form-control" required placeholder="Enter your Password"
+     ngModel required #password="ngModel">
+  </div>
+  <div class="input-group">
+    <button type="submit"  [disabled]="frm.invalid" class="btn btn-success">Login</button>
+    <a routerLink="/login" class="btn btn-success">Register</a>
+      </div>
+      <h3>login with</h3>
+      <ul class="list-group">
+        <li class="list-group-item" button type="button"  (click)= "facebook($fbapi)" class="btn btn-success" >facebook</li>
+        <li class="list-group-item" button type="button" (click)="google($gapi)" class="btn btn-primary">google</li>
+        <li class="list-group-item" button type="button" class="btn btn-success">github</li>
+
+      </ul>
+
+</div>
+</div>
+</form>
+<div>
+  {{frm.value|json}}
+  {{loginlist.gdata|json}}
+</div>
